@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>ADD</title>
+</head>
+<body>
+    <div class="m-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <a  href="{% url 'gallery' %}" class="btn btn-dark my-3">GO back</a>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <!--FORM TO ADD DOCUMENT AND FILES-->
+                            <form action="" method="POST" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <div class="mb-3 m-3">
+                                    <label>SELECT CATEGORY</label>
+                                    <select name="category" class="form-control">
+                                        <option value="none">SELECT CATEGORY</option>
+                                        {% for category in categories %}
+                                            <option value="{{category.id}}">{{category.name}}</option>
+                                        {% endfor %}
+
+                                    </select>
+
+                                </div>
+                            <!--FOR NEW CATEGORY-->
+                                <div class="mb-3 m-3">
+                                    <label>NEW CATYEGORY</label>
+                                    <input name="category_new" class="form-control" type="text" placeholder="NEW CATEGORY">
+                                </div>
+
+                            <!--DESCRIPTION-->
+                                <div class="mb-3 m-3">
+                                    <label>Description</label>
+                                    <input name="description" class="form-control" type="text" placeholder="DESCRIPTION">
+                                </div>
+                            <!--IMAGE UPLOADER-->
+                                <div class="mb-3 m-3">
+                                    <label>UPLAOD IMAGE</label>
+                                    <input required name="image" class="form-control" type="file">
+                                </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-lg">SUBMIT</button>
+
+                                  
+                            </form>
+                        </div>
+                    </div>
+                
+                
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
